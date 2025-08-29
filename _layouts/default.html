@@ -17,15 +17,15 @@
 
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-     <img class="logo" src="IMG_0537.jpg" alt="airstream.js logo" style="border: 1px solid #ccc;"/>
-      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-      {% if site.github.is_project_page %}
-        <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
-      {% endif %}
-      {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
-      {% endif %}
+    <img class="logo" src="IMG_0537.jpg" alt="airstream.js logo" style="border: 1px solid #ccc; width: 200px; height: 400px border-radius: 50%; object-fit: cover;"/>
+     <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+     {% if site.github.is_project_page %}
+       <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+     {% endif %}
+     {% if site.show_downloads %}
+       <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
+       <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
+     {% endif %}
     </header>
 
     <main id="content" class="main-content" role="main">
