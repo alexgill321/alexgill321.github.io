@@ -1,9 +1,10 @@
-# The Cayman theme
-
-[![.github/workflows/ci.yaml](https://github.com/pages-themes/cayman/actions/workflows/ci.yaml/badge.svg)](https://github.com/pages-themes/cayman/actions/workflows/ci.yaml) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)
-
-<div align="center">
-    <img src="IMG_0537.jpg" alt="Featured Image" style="border: 3px solid #159957; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 300px; margin: 20px 0;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+    <div style="flex: 1;">
+        Alex Gill
+    </div>
+    <div style="flex: 0 0 auto; margin-left: 20px;">
+        <img src="IMG_0537.jpg" alt="Featured Image" style="border: 3px solid #159957; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 300px;">
+    </div>
 </div>
 
 *Cayman is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/cayman), or even [use it today](#usage).*
