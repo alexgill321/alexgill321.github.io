@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Gill</title>
+<meta name="description" content="Alex Gill is a PhD student at the University of Utah studying LLM agents: how to evaluate them, what their behavior reveals, and how training signals shape what they learn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root { --bg: #f7f5f0; --ink: #23281f; --muted: #6c7264; --rule: #ddd8cc; --card: #ffffff; }
+
+  body {
+    --hero-bg: radial-gradient(ellipse at 70% 30%, #2c3b31 0%, #1d2822 60%, #151d18 100%);
+    --hero-ink: #f3f1e8; --hero-sub: rgba(243,241,232,.82); --frame: #efe9d8;
+    --accent: #4f7a5a; --accent2: #a9c79a; --glow: rgba(79,122,90,.3);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16.5px/1.7 "DM Sans", system-ui, sans-serif; }
+  a { color: var(--ink); text-decoration: none; background: linear-gradient(90deg, var(--accent), var(--accent2)) left bottom / 100% 2px no-repeat; padding-bottom: 1px; transition: color .2s; }
+  a:hover { color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; color: var(--hero-ink); overflow: hidden; isolation: isolate; background: var(--hero-bg); }
+  .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; }
+  .hero .ridges { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 55%; pointer-events: none; z-index: -1; }
+  .hero .inner { position: relative; max-width: 1080px; width: 100%; margin: 0 auto; padding: 96px 24px 160px;
+    display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: center; }
+  .portrait { width: 240px; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .portrait img { display: block; width: 240px; height: 300px; object-fit: cover; object-position: center 20%; border-radius: 16px;
+    border: 3px solid var(--frame); box-shadow: 0 20px 50px rgba(5,10,20,.35); }
+  .portrait:hover { transform: translateY(-6px) rotate(-1.5deg); }
+  .hero h1 { font-family: "DM Serif Display", serif; font-weight: 400; font-size: clamp(60px, 10vw, 128px); line-height: .92; margin: 0 0 18px; letter-spacing: -.01em; }
+  .hero p { font-size: 20px; max-width: 44ch; margin: 0 0 28px; color: var(--hero-sub); }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill-row a { color: var(--hero-ink); background: none; border: 1px solid currentColor; padding: 7px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;
+    opacity: .85; transition: opacity .2s, transform .2s, background-color .2s; }
+  .pill-row a:hover { opacity: 1; transform: translateY(-2px); background-color: color-mix(in srgb, currentColor 14%, transparent); }
+  .cue { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 4px;
+    font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--hero-sub); background: none; }
+  .cue svg { animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(6px); } }
+
+  /* ---------- Content ---------- */
+  .container { max-width: 960px; margin: 0 auto; padding: 24px 24px 80px; }
+  .latest { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 20px; border-radius: 14px; font-size: 15px;
+    background: color-mix(in srgb, var(--accent) 8%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); }
+  .latest .tag { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 3px 10px; border-radius: 999px; }
+  h2 { font-family: "DM Serif Display", serif; font-weight: 400; font-size: 38px; margin: 56px 0 18px; }
+  h2 .dot { color: var(--accent); }
+  .about p { max-width: 70ch; }
+  .about .outside { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .about h3 { font-family: "DM Serif Display", serif; font-weight: 400; font-size: 24px; margin: 36px 0 10px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .pub { display: grid; grid-template-columns: 6px 1fr; gap: 20px; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 22px 24px 22px 0; margin-bottom: 16px; overflow: hidden;
+    transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .pub::before { content: ""; background: linear-gradient(180deg, var(--accent), var(--accent2)); border-radius: 0 4px 4px 0; }
+  .pub:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, transparent); box-shadow: 0 14px 34px -12px var(--glow); }
+  .pub h3 { margin: 0 0 6px; font-size: 18px; font-weight: 700; line-height: 1.4; }
+  .pub h3 a { background: none; padding: 0; }
+  .pub .auth { color: var(--muted); font-size: 14.5px; margin: 0 0 10px; }
+  .pub .auth b { color: var(--ink); }
+  .pub .meta { font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+  .pub .venue { font-weight: 700; color: var(--accent); }
+  footer { border-top: 1px solid var(--rule); padding: 28px 24px; text-align: center; color: var(--muted); font-size: 14px; }
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 760px) {
+    .hero .inner { grid-template-columns: 1fr; gap: 30px; padding: 72px 20px 150px; }
+    .portrait, .portrait img { width: 160px; }
+    .portrait img { height: 200px; }
+    .cue { bottom: 56px; }
+    .container { padding: 8px 20px 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .cue svg { animation: none; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+<section class="hero" id="top">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <svg class="ridges" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#f7f5f0" d="M0 400 L0 368 L120 352 L220 362 L340 344 L430 358 L560 348 L680 366 L790 346 L900 360 L1010 350 L1140 368 L1250 346 L1360 362 L1440 352 L1440 400 Z"/>
+  </svg>
+  <div class="inner">
+    <div class="portrait"><img src="/assets/headshot.jpg" alt="Photo of Alex Gill"></div>
+    <div>
+      <h1>Alex Gill</h1>
+      <p>Second-year PhD student at the University of Utah, advised by Ana Marasović.</p>
+      <div class="pill-row">
+        <a href="mailto:alexgill321@gmail.com">Email</a>
+        <a href="/assets/Resume.pdf">CV</a>
+        <a href="https://scholar.google.com/citations?user=qBH-CMUAAAAJ&hl=en">Scholar</a>
+        <a href="https://github.com/alexgill321">GitHub</a>
+        <a href="https://bsky.app/profile/agill32.bsky.social">Bluesky</a>
+        <a href="https://x.com/alex_gill_nlp">X</a>
+      </div>
+    </div>
+  </div>
+  <a class="cue" href="#about" aria-label="Scroll to About">Scroll
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+</section>
+
+<div class="container">
+  <div class="latest reveal"><span class="tag">New</span><span><em>Divergent Paths</em> is on <a href="https://arxiv.org/abs/2610.19614">arXiv</a>. Successful and failed agent trajectories separate in embedding space, and we learn a representation that predicts outcomes early and from just a few examples, which is enough to cut GRPO training compute by up to 47%.</span></div>
+
+  <div class="about reveal" id="about">
+    <h2>About<span class="dot">.</span></h2>
+    <p>I'm a second-year PhD student in the <a href="https://www.cs.utah.edu/">Kahlert School of Computing</a> and a member of <a href="https://nlp.cs.utah.edu/">UtahNLP</a>, advised by <a href="https://www.anamarasovic.com/">Prof. Ana Marasović</a>. I study LLM agents on long-horizon, tool-using tasks: how to evaluate them, what their behavior reveals, and how the signals we train them on shape what they learn.</p>
+    <p><strong>Benchmarks that measure what matters.</strong> <a href="https://alexgill321.github.io/KNOWS-benchmark/">KNOWS</a> (EMNLP Findings 2026) tests web agents on the part that comes after search: synthesizing, organizing, and presenting what they find in real documents, spreadsheets, and slides. Before that, I studied <a href="https://arxiv.org/abs/2505.22830">what we lose</a> when evaluation data is generated by LLMs instead of people (EMNLP Findings 2025).</p>
+    <p><strong>Reading outcomes from behavior.</strong> In <a href="https://arxiv.org/abs/2610.19614"><em>Divergent Paths</em></a>, which I started as a research intern at <a href="https://joinhandshake.com/">Handshake</a> in San Francisco (January to May 2026), I treat agent trajectories as paths through a shared embedding space of actions and observations, where successful and failed attempts at the same task pull apart. We train a model, Precog-RM, on embedded rollouts which learns to separate successful from failing rollouts from just a few examples on tasks and models unseen during training. Often, Precog-RM can already predict a rollout's outcome well before the rollout ends. Used to decide when to stop GRPO training early, it cuts training compute by up to 47% at comparable performance.</p>
+
+    <h3>Current directions</h3>
+    <p><strong>How graders shape agents.</strong> Agents are increasingly post-trained with RL on rewards from LLM graders, and those graders make mistakes. I'm studying how specific kinds of grader error change the <em>strategies</em> agents learn, not just their success rates.</p>
+    <p><strong>Agent swarms under selection.</strong> How groups of LLM agents behave collectively when they cooperate, compete, and are shaped by selection pressure and scarce resources, and where that behavior matches or departs from what we know about human and biological groups.</p>
+    <p class="outside">Most of my free time is spent climbing, running and skiing in the Wasatch — see <a href="https://www.8a.nu/user/alex-gill">8a</a> and <a href="https://www.strava.com/athletes/93133541">Strava</a>.</p>
+  </div>
+
+  <h2 class="reveal">Publications<span class="dot">.</span></h2>
+  <div class="pub reveal"><div>
+    <h3><a href="https://arxiv.org/abs/2610.19614">Divergent Paths: Learning an Outcome-Predictive Representation of LLM Agent Trajectories</a></h3>
+    <p class="auth"><b>Alexander Gill</b>, Guram Gogia, Francisco Guzmán</p>
+    <div class="meta"><span class="venue">Under review</span><a href="https://arxiv.org/abs/2610.19614">arXiv</a></div>
+  </div></div>
+  <div class="pub reveal"><div>
+    <h3><a href="https://alexgill321.github.io/KNOWS-benchmark/">The Hard Part Comes After Search: Benchmarking Web Agents on Synthesizing, Organizing, and Displaying Knowledge</a></h3>
+    <p class="auth"><b>Alexander Gill</b>, Md Farhan Ishmam, Xuyen Nguyen, Neha Bhat, Parker Henry DeYoung, Fateme Hashemi Chaleshtori, Nathan Stringham, Kenneth Marino*, Ana Marasović*</p>
+    <div class="meta"><span class="venue">EMNLP Findings 2026</span><a href="https://alexgill321.github.io/KNOWS-benchmark/">Project page</a></div>
+  </div></div>
+  <div class="pub reveal"><div>
+    <h3><a href="https://arxiv.org/abs/2505.22830">What Has Been Lost with Synthetic Evaluation?</a></h3>
+    <p class="auth"><b>Alexander Gill</b>, Abhilasha Ravichander, Ana Marasović</p>
+    <div class="meta"><span class="venue">EMNLP Findings 2025</span><a href="https://arxiv.org/abs/2505.22830">arXiv</a></div>
+  </div></div>
+  <div class="pub reveal"><div>
+    <h3><a href="https://arxiv.org/abs/2407.03545">On Evaluating Explanation Utility for Human-AI Decision Making in NLP</a></h3>
+    <p class="auth">Fateme Hashemi Chaleshtori, Atreya Ghosal, <b>Alexander Gill</b>, Purbid Bambroo, Ana Marasović</p>
+    <div class="meta"><span class="venue">EMNLP Findings 2024</span><a href="https://arxiv.org/abs/2407.03545">arXiv</a></div>
+  </div></div>
+</div>
+<footer>© 2026 Alex Gill · Salt Lake City, Utah</footer>
+
+<script>
+(() => {
+  // Animated topographic contours behind the hero.
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hero = document.querySelector('.hero');
+  const c = document.getElementById('sky'), ctx = c.getContext('2d');
+  let w, h, step;
+
+  // small 3D value noise
+  const perm = new Uint8Array(512);
+  { const p = [...Array(256).keys()]; for (let i = 255; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [p[i], p[j]] = [p[j], p[i]]; } for (let i = 0; i < 512; i++) perm[i] = p[i & 255]; }
+  const fade = t => t * t * t * (t * (t * 6 - 15) + 10), lerp = (a, b, t) => a + (b - a) * t;
+  const hash = (x, y, z) => perm[(perm[(perm[x & 255] + y) & 255] + z) & 255] / 255;
+  const noise = (x, y, z) => {
+    const X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z), u = fade(x - X), v = fade(y - Y), s = fade(z - Z);
+    const l = (dx, dy, dz) => hash(X + dx, Y + dy, Z + dz);
+    return lerp(lerp(lerp(l(0,0,0), l(1,0,0), u), lerp(l(0,1,0), l(1,1,0), u), v),
+                lerp(lerp(l(0,0,1), l(1,0,1), u), lerp(l(0,1,1), l(1,1,1), u), v), s);
+  };
+
+  const resize = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    w = hero.clientWidth; h = hero.clientHeight; step = w < 700 ? 10 : 12;
+    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  // marching squares over the noise field, one path per contour level
+  const draw = (t) => {
+    ctx.clearRect(0, 0, w, h);
+    const S = step, cols = Math.ceil(w / S) + 1, rows = Math.ceil(h / S) + 1, z = reduce ? 0 : (t || 0) * 0.00005;
+    const f = new Float32Array(cols * rows);
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const x = i * S * .0024, y = j * S * .0024;
+      f[j * cols + i] = noise(x, y, z) * .7 + noise(x * 2.3 + 5, y * 2.3, z * 1.5) * .3;
+    }
+    const levels = 16;
+    for (let k = 1; k < levels; k++) {
+      const L = k / levels, index = k % 4 === 0;
+      ctx.strokeStyle = index ? 'rgba(214,226,196,.30)' : 'rgba(214,226,196,.13)';
+      ctx.lineWidth = index ? 1.3 : .8;
+      ctx.beginPath();
+      for (let j = 0; j < rows - 1; j++) for (let i = 0; i < cols - 1; i++) {
+        const a = f[j * cols + i], b = f[j * cols + i + 1], cc = f[(j + 1) * cols + i + 1], d = f[(j + 1) * cols + i];
+        const idx = (a > L) | ((b > L) << 1) | ((cc > L) << 2) | ((d > L) << 3);
+        if (idx === 0 || idx === 15) continue;
+        const x = i * S, y = j * S;
+        const T = [x + S * (L - a) / (b - a), y], Rt = [x + S, y + S * (L - b) / (cc - b)],
+              B = [x + S * (L - d) / (cc - d), y + S], Lf = [x, y + S * (L - a) / (d - a)];
+        const seg = (p, q) => { ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); };
+        switch (idx) {
+          case 1: case 14: seg(Lf, T); break;   case 2: case 13: seg(T, Rt); break;
+          case 3: case 12: seg(Lf, Rt); break;  case 4: case 11: seg(Rt, B); break;
+          case 6: case 9: seg(T, B); break;     case 7: case 8: seg(Lf, B); break;
+          case 5: seg(Lf, T); seg(Rt, B); break; case 10: seg(T, Rt); seg(Lf, B); break;
+        }
+      }
+      ctx.stroke();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  };
+
+  addEventListener('resize', () => { resize(); if (reduce) draw(0); });
+  resize(); requestAnimationFrame(draw);
+
+  // reveal content as it scrolls into view
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+    { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
